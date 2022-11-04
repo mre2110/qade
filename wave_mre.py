@@ -53,7 +53,7 @@ xt0 = np.array([[x_elem, 0] for x_elem in x])
 u0 = qade.equation(u[0, 0] - uex(x, 0), xt0)
 u1 = qade.equation(u[0, 1] - 0*x      , xt0)
   
-# Boundary conditions for phi at x = 0 and x = 1
+# Boundary conditions for u at x = 0 and x = 1
 x0t = np.array([[0, t_elem] for t_elem in t])
 bc0 = qade.equation(u[0, 0] - 0 * t, x0t)
 
@@ -68,7 +68,7 @@ print(f"loss = {usol.loss:.3}, weights = {np.around(usol.weights, 2)}")
 
 
 
-# Show the results
+# results
 for tk in np.linspace(t.min(), t.max(), 5):
     xt = np.array([[x_elem, tk] for x_elem in x])
     plt.plot(x, usol(xt), label=f"t = {tk}")
